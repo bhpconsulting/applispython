@@ -1,9 +1,0 @@
-streamlit
-re
-requests
-io
-fitz
-concurrent.futures
-os
-PyMuPDF
-
