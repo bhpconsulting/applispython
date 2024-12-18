@@ -1,7 +1,3 @@
-re
 streamlit
 requests
-io
-fitz
-concurrent.futures
-os
+PyMuPDF
