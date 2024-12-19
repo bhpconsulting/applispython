@@ -234,7 +234,7 @@ def run():
                 # recherche à nouveau des mot-clés et création d'un pdf où les mots-clés trouvés sont surlignés
                 surligner(chemin,nwl,url,keywords)
                 #url_surlign = racine + nwl +".pdf" # url du fichier PDF surligné
-                fich_surlign = chemin + "\output_highlighted_" + nwl + ".pdf"
+                fich_surlign = chemin + "/output_highlighted_" + nwl + ".pdf"
                 st.write(fich_surlign)
 
                 # traitement du fichier output_highlighted
