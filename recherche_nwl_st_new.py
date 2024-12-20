@@ -55,9 +55,6 @@ def run():
         response.raise_for_status()
 
         # Écrire le fichier PDF en local pour modification
-        #with open(chemin + "input.pdf", "wb") as f:
-            #f.write(response.content)   
-            
         file_path = os.path.join(chemin, "input.pdf")
         st.write(file_path)
         with open(file_path, "wb") as file:
