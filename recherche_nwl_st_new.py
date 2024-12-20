@@ -245,7 +245,6 @@ def run():
                         
                     # encodage en base64 pour générer un lien HTML    
                     url_surlign = base64.b64encode(pdf_bytes).decode('utf-8')
-                    st.write(url_surlign)
                     pdf_link = f'<a href="data:application/pdf;base64,{url_surlign}" target="_blank">Ouvrir le fichier PDF {nwl}</a>'
                     
                     # affichage du lien
