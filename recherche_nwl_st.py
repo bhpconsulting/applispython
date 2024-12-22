@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 """
-Recherche de fichiers PDF sur mots-clés modifié
+Recherche de fichiers PDF sur mots-clés 
 """
 def run():
     import re # pour gérer les 'expressions régulières'
