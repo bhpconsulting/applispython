@@ -79,7 +79,6 @@ def run():
                 
                 # Recherche approximative des mots-clés
                 keyword_matches = recherche_keywords_approximatif(text, keywords, max_dist)
-                st.write(keyword_matches)
                 
                 # Association des positions trouvées avec les numéros de pages
                 mots_cles_positions = {}
@@ -120,6 +119,20 @@ def run():
 
     results = recherche_et_surligne_pdf(nom, url, keywords, output_path, max_dist)
     st.write(results)
+    
+    pdf_path = output_path
+
+    # Lire le fichier PDF
+    with open(pdf_path, "rb") as pdf_file:
+        pdf_bytes = pdf_file.read()
+
+    # Afficher le PDF dans Streamlit
+    st.download_button(
+        label="Télécharger le PDF",
+        data=pdf_bytes,
+        file_name=output_path,
+        mime="application/pdf"
+    )
     
 # Si l'application est lancée directement (en dehors du portail), lancer l'application
 if __name__ == "__main__":    
