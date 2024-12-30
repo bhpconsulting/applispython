@@ -125,7 +125,8 @@ def run():
     # Lire le fichier PDF
     with open(pdf_path, "rb") as pdf_file:
         pdf_bytes = pdf_file.read()
-
+    
+    """
     # Afficher le PDF dans Streamlit
     st.download_button(
         label="Télécharger le PDF",
@@ -133,6 +134,7 @@ def run():
         file_name=output_path,
         mime="application/pdf"
     )
+    """
     
     st.markdown("### Aperçu du PDF :")
     st.pdf(pdf_bytes)
