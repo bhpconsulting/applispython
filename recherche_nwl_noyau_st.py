@@ -111,7 +111,7 @@ def run():
             return {"error": f"Erreur lecture/surlignage PDF {url}: {e}"}
 
     #----------------------------------
-    keywords = input("Mots-clés (séparés par des virgules) : ")
+    keywords = "AGIRabcd"
     keywords = keywords.split(',')  # Transformation de la chaîne en liste
     nom = "NWL90"
     url = "https://www.agirabcd.fr/NEWSLETTER/N90/N90_NWL.pdf"
@@ -119,7 +119,7 @@ def run():
     max_dist = 1
 
     results = recherche_et_surligne_pdf(nom, url, keywords, output_path, max_dist)
-    print(results)
+    st.write(results)
     
 # Si l'application est lancée directement (en dehors du portail), lancer l'application
 if __name__ == "__main__":    
