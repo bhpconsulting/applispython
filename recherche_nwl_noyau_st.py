@@ -134,6 +134,9 @@ def run():
         mime="application/pdf"
     )
     
+    st.markdown("### Aperçu du PDF :")
+    st.pdf(pdf_bytes)
+    
 # Si l'application est lancée directement (en dehors du portail), lancer l'application
 if __name__ == "__main__":    
     run()    
