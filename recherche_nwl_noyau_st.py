@@ -119,25 +119,24 @@ def run():
 
     results = recherche_et_surligne_pdf(nom, url, keywords, output_path, max_dist)
     st.write(results)
-    
-    pdf_path = output_path
 
-    # Lire le fichier PDF
-    with open(pdf_path, "rb") as pdf_file:
+    # Lire le PDF
+    with open(output_path, "rb") as pdf_file:
         pdf_bytes = pdf_file.read()
-    
-    """
-    # Afficher le PDF dans Streamlit
+
+    # Télécharger le fichier
     st.download_button(
         label="Télécharger le PDF",
         data=pdf_bytes,
         file_name=output_path,
         mime="application/pdf"
     )
-    """
-    
-    st.markdown("### Aperçu du PDF :")
-    st.pdf(pdf_bytes)
+
+    # Afficher dans une iframe
+    st.markdown(
+        f'<iframe src="data:application/pdf;base64,{pdf_bytes.encode("base64").decode()}" width="700" height="500" type="application/pdf"></iframe>',
+        unsafe_allow_html=True,
+    )
     
 # Si l'application est lancée directement (en dehors du portail), lancer l'application
 if __name__ == "__main__":    
