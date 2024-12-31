@@ -18,6 +18,7 @@ def run():
         results_new = []
         for result in results:
             st.write(result)
+            """
             nb_occur = 0 # nombre d'occurrences d'un ou des mots-clé(s) dans le fichier
             for keyword, positions in result['matches'].items():
                 # positions est une liste de tuples. Un tuple = (start,end) du mot-clé
@@ -28,7 +29,8 @@ def run():
                 url = result['url']
                 matches = result['matches']
                 nom = result['nom']
-                results_new.append({"url": url, "matches": matches,"nom": nom,"nb_occur": nb_occur}) 
+                results_new.append({"url": url, "matches": matches,"nom": nom,"nb_occur": nb_occur})
+           """     
         # la liste results_sorted est trié sur la clé 'nb_occur'
         results_sorted = sorted(results_new, key=lambda x: x["nb_occur"], reverse = True)
         return results_sorted  
