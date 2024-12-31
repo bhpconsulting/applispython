@@ -11,6 +11,26 @@ def run():
     import unicodedata
     import streamlit as st
     import base64
+    
+    #--------------------------------
+    def tri_result(results):
+        # tri de 'results' par ordre décroissant d'occurrence des mots-clés 
+        results_new = []
+        for result in results:
+            nb_occur = 0 # nombre d'occurrences d'un ou des mots-clé(s) dans le fichier
+            for keyword, positions in result['matches'].items():
+                # positions est une liste de tuples. Un tuple = (start,end) du mot-clé
+                nb_occur += len(positions)
+            # s'il y a au moins une occurrence on crée un élément (dictionnaire) dans la liste 'results_new'  
+            # en rajoutant un élément du dictionnaire (nb_occur)
+            if nb_occur != 0: 
+                url = result['url']
+                matches = result['matches']
+                nom = result['nom']
+                results_new.append({"url": url, "matches": matches,"nom": nom,"nb_occur": nb_occur}) 
+        # la liste results_sorted est trié sur la clé 'nb_occur'
+        results_sorted = sorted(results_new, key=lambda x: x["nb_occur"], reverse = True)
+        return results_sorted  
 
     #-------------------------------
     def normaliser_texte(texte):
@@ -118,6 +138,9 @@ def run():
     max_dist = 1
 
     results = recherche_et_surligne_pdf(nom, url, keywords, output_path, max_dist)
+    
+    # tri de 'results' par ordre d'occurrence des mots-clés décroissant
+    results_sorted = tri_result(results)
 
     # Lire le fichier PDF
     with open(output_path, "rb") as pdf_file:
