@@ -17,7 +17,7 @@ def run():
         # tri de 'results' par ordre décroissant d'occurrence des mots-clés 
         results_new = []
         for result in results:
-            st.write(result)
+            st.write("result",result)
             """
             nb_occur = 0 # nombre d'occurrences d'un ou des mots-clé(s) dans le fichier
             for keyword, positions in result['matches'].items():
