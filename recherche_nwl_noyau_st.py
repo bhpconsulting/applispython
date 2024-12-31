@@ -51,8 +51,7 @@ def run():
                     try:
                         # Extrait le texte correspondant
                         text_segment = page.get_text()[start:end]
-                        st.write(f"Recherche du texte '{text_segment}' sur la page {page_num}...")
-
+                     
                         # Recherche dans la page
                         rects = page.search_for(text_segment)
 
