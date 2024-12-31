@@ -90,7 +90,7 @@ def run():
                             (m.start, m.end) for keyword in keywords 
                             for m in find_near_matches(normaliser_texte(keyword), normaliser_texte(page_text), max_l_dist=max_dist)
                           ]
-                st.write(mots_cles_positions)
+
                 succes = False  # succes = True s'il y a au moins un mot-clé trouvé
                 for page_num, positions in mots_cles_positions.items():
                     if positions != []:
@@ -119,7 +119,6 @@ def run():
     max_dist = 1
 
     results = recherche_et_surligne_pdf(nom, url, keywords, output_path, max_dist)
-    st.write(results)
 
     # Lire le fichier PDF
     with open(output_path, "rb") as pdf_file:
@@ -127,6 +126,13 @@ def run():
 
     # Convertir les données PDF en base64
     base64_pdf = base64.b64encode(pdf_bytes).decode('utf-8')
+    
+    st.download_button(
+        label="Télécharger le PDF",
+        data=pdf_bytes,
+        file_name=output_path,
+        mime="application/pdf"
+    )
 
     # Afficher le PDF dans une iframe
     pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="500" type="application/pdf"></iframe>'
