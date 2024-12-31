@@ -10,6 +10,7 @@ def run():
     from fuzzysearch import find_near_matches  # Recherche approximative
     import unicodedata
     import streamlit as st
+    import base64
 
     #-------------------------------
     def normaliser_texte(texte):
@@ -120,23 +121,16 @@ def run():
     results = recherche_et_surligne_pdf(nom, url, keywords, output_path, max_dist)
     st.write(results)
 
-    # Lire le PDF
+    # Lire le fichier PDF
     with open(output_path, "rb") as pdf_file:
         pdf_bytes = pdf_file.read()
 
-    # Télécharger le fichier
-    st.download_button(
-        label="Télécharger le PDF",
-        data=pdf_bytes,
-        file_name=output_path,
-        mime="application/pdf"
-    )
+    # Convertir les données PDF en base64
+    base64_pdf = base64.b64encode(pdf_bytes).decode('utf-8')
 
-    # Afficher dans une iframe
-    st.markdown(
-        f'<iframe src="data:application/pdf;base64,{pdf_bytes.encode("base64").decode()}" width="700" height="500" type="application/pdf"></iframe>',
-        unsafe_allow_html=True,
-    )
+    # Afficher le PDF dans une iframe
+    pdf_display = f'<iframe src="data:application/pdf;base64,{base64_pdf}" width="700" height="500" type="application/pdf"></iframe>'
+    st.markdown(pdf_display, unsafe_allow_html=True)
     
 # Si l'application est lancée directement (en dehors du portail), lancer l'application
 if __name__ == "__main__":    
