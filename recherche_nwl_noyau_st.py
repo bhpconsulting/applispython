@@ -2,7 +2,6 @@
 """
 Adapté le 24 Décembre 2024 pour recherche approximative et surlignage des mots-clés
 """
-
 def run():
     import requests
     from io import BytesIO
